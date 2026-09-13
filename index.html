@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Shacks Sports Updates - Football analysis, fixtures, results and scoreline projections.">
+
+<title>Shacks Sports Updates</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
+    color:#17202a;
+}
+
+/* HEADER */
+
+header{
+    background:#07111f;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header{
+    max-width:1100px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#18d66b;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#18d66b;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    background:none;
+    border:0;
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(135deg,#07111f,#123b55);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#18d66b;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#dbe5eb;
+    font-size:17px;
+}
+
+.buttons{
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    margin:5px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.green{
+    background:#18d66b;
+    color:#07111f;
+}
+
+.white{
+    background:white;
+    color:#07111f;
+}
+
+/* SECTIONS */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:30px;
+}
+
+.title p{
+    color:#68747d;
+}
+
+/* SEARCH */
+
+.search{
+    max-width:600px;
+    margin:0 auto 25px;
+    display:flex;
+}
+
+.search input{
+    flex:1;
+    padding:14px;
+    border:1px solid #ccd3d8;
+    border-radius:8px 0 0 8px;
+    font-size:15px;
+    outline:none;
+}
+
+.search button{
+    border:0;
+    background:#18d66b;
+    padding:0 20px;
+    font-weight:bold;
+    border-radius:0 8px 8px 0;
+}
+
+/* FILTERS */
+
+.filters{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.filters button{
+    border:0;
+    padding:9px 17px;
+    margin:5px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.filters button.active,
+.filters button:hover{
+    background:#18d66b;
+}
+
+/* MATCHES */
+
+.matches{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:22px;
+    border-radius:13px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.league{
+    color:#12a854;
+    font-size:13px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.teams{
+    text-align:center;
+    font-size:19px;
+    font-weight:bold;
+    margin:18px 0;
+}
+
+.vs{
+    color:#8b969e;
+    font-size:13px;
+    margin:5px;
+}
+
+.analysis{
+    background:#f0f4f6;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:12px;
+}
+
+.score{
+    border-left:4px solid #18d66b;
+    padding-left:12px;
+}
+
+.confidence{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* NEWS */
+
+.news{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.news-card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.news-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+/* ABOUT */
+
+.about{
+    background:#07111f;
+    color:white;
+    text-align:center;
+}
+
+.about p{
+    max-width:750px;
+    margin:15px auto;
+    color:#d5dfe5;
+}
+
+/* WHATSAPP */
+
+.contact{
+    text-align:center;
+}
+
+.whatsapp{
+    background:white;
+    max-width:650px;
+    margin:auto;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.whatsapp-number{
+    font-size:22px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+/* FOOTER */
+
+footer{
+    background:#040b14;
+    color:#aeb9c2;
+    text-align:center;
+    padding:25px;
+}
+
+footer strong{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        background:#07111f;
+        flex-direction:column;
+        text-align:center;
+        padding:20px;
+    }
+
+    nav.show{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .matches,
+    .news{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="header">
+
+<div class="logo">
+SHACKS <span>SPORTS</span>
+</div>
+
+<button class="menu" onclick="menuToggle()">
+☰
+</button>
+
+<nav id="navigation">
+
+<a href="#home">Home</a>
+<a href="#analysis">Analysis</a>
+<a href="#news">News</a>
+<a href="#about">About</a>
+<a href="#contact">WhatsApp</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<h1>
+SHACKS <span>SPORTS UPDATES</span>
+</h1>
+
+<p>
+Your football platform for match analysis,
+football updates, fixtures, results and
+scoreline projections.
+</p>
+
+<div class="buttons">
+
+<a href="#analysis" class="btn green">
+View Analysis
+</a>
+
+<a href="#contact" class="btn white">
+Contact Us
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ANALYSIS -->
+
+<section class="container" id="analysis">
+
+<div class="title">
+
+<h2>⚽ Match Analysis</h2>
+
+<p>
+Latest football analysis and projected scorelines
+</p>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search team..."
+onkeyup="searchTeams()">
+
+<button onclick="searchTeams()">
+Search
+</button>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+<button
+class="active"
+onclick="filterMatches('all',this)">
+All
+</button>
+
+<button
+onclick="filterMatches('europe',this)">
+Europe
+</button>
+
+<button
+onclick="filterMatches('international',this)">
+International
+</button>
+
+</div>
+
+
+
+<div class="matches" id="matchList">
+
+
+<!-- MATCH 1 -->
+
+<div class="card"
+data-category="europe"
+data-teams="arsenal chelsea">
+
+<div class="league">
+Premier League
+</div>
+
+<div class="teams">
+
+Arsenal
+
+<div class="vs">
+VS
+</div>
+
+Chelsea
+
+</div>
+
+<div class="analysis">
+
+Arsenal may have an advantage
+because of home support and attacking quality.
+
+</div>
+
+<div class="score">
+
+<strong>Projected Scoreline:</strong>
+
+<br>
+
+Arsenal 2 - 1 Chelsea
+
+</div>
+
+<div class="confidence">
+
+Confidence: 72%
+
+</div>
+
+</div>
+
+
+
+<!-- MATCH 2 -->
+
+<div class="card"
+data-category="europe"
+data-teams="barcelona real madrid">
+
+<div class="league">
+La Liga
+</div>
+
+<div class="teams">
+
+Barcelona
+
+<div class="vs">
+VS
+</div>
+
+Real Madrid
+
+</div>
+
+<div class="analysis">
+
+A highly competitive fixture with
+strong attacking players on both sides.
+
+</div>
+
+<div class="score">
+
+<strong>Projected Scoreline:</strong>
+
+<br>
+
+Barcelona 2 - 2 Real Madrid
+
+</div>
+
+<div class="confidence">
+
+Confidence: 65%
+
+</div>
+
+</div>
+
+
+
+<!-- MATCH 3 -->
+
+<div class="card"
+data-category="international"
+data-teams="uganda kenya">
+
+<div class="league">
+International
+</div>
+
+<div class="teams">
+
+Uganda
+
+<div class="vs">
+VS
+</div>
+
+Kenya
+
+</div>
+
+<div class="analysis">
+
+A physical match where midfield control
+could be very important.
+
+</div>
+
+<div class="score">
+
+<strong>Projected Scoreline:</strong>
+
+<br>
+
+Uganda 1 - 0 Kenya
+
+</div>
+
+<div class="confidence">
+
+Confidence: 61%
+
+</div>
+
+</div>
+
+
+
+<!-- MATCH 4 -->
+
+<div class="card"
+data-category="europe"
+data-teams="manchester city liverpool">
+
+<div class="league">
+Premier League
+</div>
+
+<div class="teams">
+
+Manchester City
+
+<div class="vs">
+VS
+</div>
+
+Liverpool
+
+</div>
+
+<div class="analysis">
+
+Both teams have strong attacking options,
+which could produce an entertaining match.
+
+</div>
+
+<div class="score">
+
+<strong>Projected Scoreline:</strong>
+
+<br>
+
+Manchester City 2 - 2 Liverpool
+
+</div>
+
+<div class="confidence">
+
+Confidence: 64%
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- NEWS -->
+
+<section class="container" id="news">
+
+<div class="title">
+
+<h2>📰 Football Updates</h2>
+
+<p>
+Stay informed with Shacks Sports Updates
+</p>
+
+</div>
+
+
+<div class="news">
+
+
+<div class="news-card">
+
+<div class="news-icon">
+⚽
+</div>
+
+<h3>
+Daily Football Analysis
+</h3>
+
+<p>
+Follow our latest football analysis,
+match previews and scoreline projections.
+</p>
+
+</div>
+
+
+
+<div class="news-card">
+
+<div class="news-icon">
+🔥
+</div>
+
+<h3>
+Trending Football
+</h3>
+
+<p>
+Get football discussions and important
+stories from around the football world.
+</p>
+
+</div>
+
+
+
+<div class="news-card">
+
+<div class="news-icon">
+📊
+</div>
+
+<h3>
+Team Statistics
+</h3>
+
+<p>
+Compare teams, form and important
+match statistics.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<div class="container">
+
+<h2>
+About Shacks Sports Updates
+</h2>
+
+<p>
+Shacks Sports Updates is a football information
+platform focused on football analysis, match
+previews, scoreline projections, results and
+football discussions.
+</p>
+
+<p>
+Our goal is to make football information
+simple, useful and enjoyable for fans.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- WHATSAPP -->
+
+<section class="container contact" id="contact">
+
+<div class="title">
+
+<h2>
+📲 Need More Updates?
+</h2>
+
+<p>
+Contact Shacks Sports Updates directly on WhatsApp.
+</p>
+
+</div>
+
+
+<div class="whatsapp">
+
+<h3>
+Shacks Sports Updates
+</h3>
+
+<div class="whatsapp-number">
++256 748 866 912
+</div>
+
+<p>
+For more football updates, analysis and
+information, chat with us on WhatsApp.
+</p>
+
+<br>
+
+<a
+href="https://wa.me/256748866912?text=Hello%20Shacks%20Sports%20Updates%2C%20I%20need%20more%20football%20updates."
+target="_blank"
+class="btn green">
+
+💬 Chat on WhatsApp
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© <span id="year"></span>
+<strong>Shacks Sports Updates</strong>
+</p>
+
+<p>
+Football information and analysis for fans.
+</p>
+
+</footer>
+
+
+
+<script>
+
+
+/* MOBILE MENU */
+
+function menuToggle(){
+
+    document
+    .getElementById("navigation")
+    .classList.toggle("show");
+
+}
+
+
+
+/* FILTER MATCHES */
+
+function filterMatches(category,button){
+
+    const cards =
+    document.querySelectorAll(".card");
+
+    const buttons =
+    document.querySelectorAll(".filters button");
+
+    buttons.forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+
+    cards.forEach(function(card){
+
+        if(
+            category === "all" ||
+            card.dataset.category === category
+        ){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* SEARCH */
+
+function searchTeams(){
+
+    const input =
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+    const cards =
+    document.querySelectorAll(".card");
+
+
+    cards.forEach(function(card){
+
+        const teams =
+        card.dataset.teams.toLowerCase();
+
+
+        if(teams.includes(input)){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+</script>
+
+</body>
+</html>
